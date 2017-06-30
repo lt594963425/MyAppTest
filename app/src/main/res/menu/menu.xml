@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+     <item android:title="加好友"
+         android:id="@+id/jy"
+           app:showAsAction="always"
+         android:icon="@drawable/ic_dialog_dialer"/>
+    <item android:title="扫一扫"
+        android:id="@+id/sao"
+          android:icon="@drawable/ic_dialog_info"/>
+    <item android:title="查找"
+        android:id="@+id/find"
+          android:icon="@drawable/ic_dialog_focused_holo"/>
+    <item android:title="定位"
+        android:id="@+id/local"
+          android:icon="@drawable/ic_dialog_map"
+        app:showAsAction="always"/>
+</menu>

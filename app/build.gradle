@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "com.example.administrator.fragmenttabhost"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        jackOptions {
+            enabled true
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:support-vector-drawable:25.3.1'
+    testCompile 'junit:junit:4.12'
+    //okhttp与日志拦截器
+    compile 'com.squareup.okhttp3:okhttp:3.8.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    //rx io.reactivex.rxjava2:rxjava:2.0.4
+
+    //  io.reactivex.rxjava2:rxjava:2.0.4
+    compile 'io.reactivex.rxjava2:rxjava:2.0.4   '
+    compile 'io.reactivex.rxjava2:rxjava:2.0.4'
+    compile 'com.youth.banner:banner:1.4.9'
+    compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile files('libs/nineoldandroids-2.4.0.jar')
+    compile 'com.jakewharton:butterknife:8.6.0'
+    compile files('libs/asmack-jse-buddycloud-2010.12.11.jar')
+    compile files('libs/jpinyin-1.0.jar')
+    compile files('libs/MobCommons-2017.0608.1618.jar')
+    compile files('libs/MobTools-2017.0608.1618.jar')
+    compile files('libs/ShareSDK-Core-3.0.0.jar')
+    compile files('libs/ShareSDK-Email-3.0.0.jar')
+    compile files('libs/ShareSDK-QQ-3.0.0.jar')
+    compile files('libs/ShareSDK-QZone-3.0.0.jar')
+    compile files('libs/ShareSDK-ShortMessage-3.0.0.jar')
+    compile files('libs/ShareSDK-SinaWeibo-3.0.0.jar')
+    compile files('libs/ShareSDK-Wechat-3.0.0.jar')
+    compile files('libs/ShareSDK-Wechat-Core-3.0.0.jar')
+    compile files('libs/ShareSDK-Wechat-Favorite-3.0.0.jar')
+    compile files('libs/ShareSDK-Wechat-Moments-3.0.0.jar')
+    compile files('libs/ShareSDK-Alipay-3.0.0.jar')
+    compile files('libs/ShareSDK-Alipay-Core-3.0.0.jar')
+    compile files('libs/ShareSDK-Alipay-Moments-3.0.0.jar')
+    compile files('libs/ShareSDK-Facebook-3.0.0.jar')
+    compile files('libs/ShareSDK-Twitter-3.0.0.jar')
+    compile 'de.greenrobot:greendao:2.1.0'
+    compile 'de.greenrobot:greendao-generator:2.1.0'
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+}

@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#4B69A2"
+    tools:context=".QQConnection" >
+
+   
+    <!-- 列表 -->
+
+    <ListView
+        android:id="@+id/contactlistview"
+        android:dividerHeight="1dp"
+        android:divider="#DA5420"
+        android:cacheColorHint="@android:color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </ListView>
+
+</LinearLayout>
