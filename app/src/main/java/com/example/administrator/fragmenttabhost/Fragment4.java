@@ -1,13 +1,17 @@
 package com.example.administrator.fragmenttabhost;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.administrator.GreenDao.ActivityGreenDao;
 import com.example.administrator.activity.SplashActivity;
 import com.example.administrator.retrofit.ActivityRetrofit;
@@ -18,6 +22,7 @@ import com.example.administrator.ui.activity.ActivityTwo;
 import com.example.administrator.ui.activity.OKHttpActivity;
 
 import cn.sharesdk.onekeyshare.OnekeyShare;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 /**
@@ -26,15 +31,42 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 public class Fragment4 extends Fragment implements View.OnClickListener {
     String url = "http://www.baidu.com/";
 
-    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8,btn9;
+    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
     String[] arr = {"asdasd", "asfsfsd", "rfefe",};
     private String TAG = "MainActivity";
+    private CircleImageView proFileImage;
+    private ImageView circleimage;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
             savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_item4, null);
+        proFileImage = (CircleImageView) view.findViewById(R.id.profile_image);
+        circleimage = (ImageView) view.findViewById(R.id.circle_image);
+        //加载网络图片
+        //  proFileImage.setImageResource(R.drawable.hed);
+        String path = "http://img3.imgtn.bdimg.com/it/u=3242709860,2221903223&fm=214&gp=0.jpg";
+
+        Glide.with(getContext())
+                .load(path)
+                .placeholder(R.drawable.head_1)
+                .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                .error(R.drawable.hed)
+                .into(proFileImage);
+
+        Glide.with(getContext())
+                .load(path)
+                .transform(new GlideCircleTransform(getContext()))
+                .placeholder(R.drawable.head_1)
+                .error(R.drawable.hed)
+                .into(circleimage);
+        ////本地文件
+     /*   File file = new File(Environment.getExternalStorageDirectory(), "xiayu.png");
+        //加载图片
+        Glide.with(this).load(file).into(iv);
+        */
+        proFileImage.setImageURI(Uri.parse(path));
         btn1 = (Button) view.findViewById(R.id.btn1);
         btn2 = (Button) view.findViewById(R.id.btn2);
         btn3 = (Button) view.findViewById(R.id.btn3);
@@ -49,7 +81,6 @@ public class Fragment4 extends Fragment implements View.OnClickListener {
     }
 
     private void initView() {
-
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
         btn3.setOnClickListener(this);

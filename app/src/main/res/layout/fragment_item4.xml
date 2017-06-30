@@ -5,11 +5,25 @@
     android:scrollbars="none">
 
     <LinearLayout
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:src="@drawable/hed"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"/>
+        <ImageView
+            android:src="@drawable/hed"
+            android:id="@+id/circle_image"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            />
         <Button
             android:id="@+id/btn1"
             android:layout_width="match_parent"
