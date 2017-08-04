@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.example.administrator.view.FocusTextview
+            android:id="@+id/AMTV1"
+            android:layout_width="400dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dip"
+            android:background="#2FFFFFFF"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:lines="1"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:text="这才是真正的文字跑马灯效果,文字移动速度，文字移动方向，文字移动的样式，动画等等……"
+            android:textColor="@android:color/black"
+            android:textSize="25sp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:elevation="5dp"
+
+            android:src="@drawable/hed"
+            app:civ_border_color="#FF0000"
+            app:civ_border_width="2dp" />
+
+        <android.support.v7.widget.CardView
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            app:cardElevation="10dp"
+            app:contentPadding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/circle_image"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/hed" />
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_margin="5dp"
+            app:cardCornerRadius="48dp"
+            android:clickable="true"
+            app:cardElevation="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/hed" />
+        </android.support.v7.widget.CardView>
+
+        <Button
+           android:outlineProvider="background"
+            android:id="@+id/btn1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:padding="2dp"
+            android:text="QQ" />
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:padding="1dp"
+            android:text="RecylerView" />
+
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:padding="1dp"
+            android:text="下拉列表" />
+
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:padding="1dp"
+            android:text="list刷新" />
+
+        <Button
+            android:id="@+id/btn5"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:padding="1dp"
+            android:text="加载图片三级缓存" />
+
+        <Button
+            android:id="@+id/btn6"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:padding="1dp"
+            android:text="分享" />
+
+        <Button
+            android:id="@+id/btn7"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:padding="1dp"
+            android:text="OKhttp" />
+
+        <Button
+            android:id="@+id/btn8"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:padding="1dp"
+            android:text="GreenDao" />
+
+        <Button
+            android:id="@+id/btn9"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:padding="1dp"
+            android:text="retrofit" />
+        <Button
+            android:id="@+id/btn10"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:padding="1dp"
+            android:text="TextInputLayout" />
+    </LinearLayout>
+</ScrollView>

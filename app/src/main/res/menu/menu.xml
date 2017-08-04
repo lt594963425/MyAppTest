@@ -5,14 +5,14 @@
          android:id="@+id/jy"
            app:showAsAction="always"
          android:icon="@drawable/ic_dialog_dialer"/>
-    <item android:title="扫一扫"
-        android:id="@+id/sao"
+    <item android:title="普通模式"
+        android:id="@+id/id_map_model_common"
           android:icon="@drawable/ic_dialog_info"/>
-    <item android:title="查找"
-        android:id="@+id/find"
+    <item android:title="跟随模式"
+        android:id="@+id/id_map_model_following"
           android:icon="@drawable/ic_dialog_focused_holo"/>
-    <item android:title="定位"
-        android:id="@+id/local"
+    <item android:title="罗盘模式"
+        android:id="@+id/id_map_model_compass"
           android:icon="@drawable/ic_dialog_map"
-        app:showAsAction="always"/>
+       />
 </menu>

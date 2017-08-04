@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolbar"/>
+    <EditText
+        android:hint="输入地址"
+        android:text="长沙市芙蓉区太平街"
+        android:id="@+id/input_address"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <TextView
+        android:background="@drawable/bg_recylerview_normal"
+        android:elevation="1dp"
+        android:gravity="center"
+        android:id="@+id/go"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="去这儿"/>
+</LinearLayout>

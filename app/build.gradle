@@ -1,24 +1,43 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'MyAPP'
+            keyPassword 'lt767435'
+            storeFile file('C:/myapp.jks')
+            storePassword 'lt767435'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
     defaultConfig {
-        applicationId "com.example.administrator.fragmenttabhost"
-        minSdkVersion 15
+        applicationId "com.example.administrator"
+        minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
         jackOptions {
             enabled true
         }
+        ndk {
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a', 'x86', 'x86_64'
+        }
     }
     buildTypes {
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.config
+            zipAlignEnabled true
+        }
         release {
             minifyEnabled false
+            signingConfig signingConfigs.config
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled true
         }
     }
 }
@@ -28,47 +47,41 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile 'com.android.support:cardview-v7:25.3.1'
+    compile 'com.android.support:palette-v7:25.3.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:support-vector-drawable:25.3.1'
     testCompile 'junit:junit:4.12'
+    compile 'de.greenrobot:greendao:2.1.0'
+    compile 'de.greenrobot:greendao-generator:2.1.0'
     //okhttp与日志拦截器
     compile 'com.squareup.okhttp3:okhttp:3.8.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
-    //rx io.reactivex.rxjava2:rxjava:2.0.4
-
+    //Gson converter
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
     //  io.reactivex.rxjava2:rxjava:2.0.4
-    compile 'io.reactivex.rxjava2:rxjava:2.0.4   '
-    compile 'io.reactivex.rxjava2:rxjava:2.0.4'
+    compile 'io.reactivex.rxjava2:rxjava:2.0.1'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'com.youth.banner:banner:1.4.9'
-    compile 'com.github.bumptech.glide:glide:3.5.2'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile files('libs/nineoldandroids-2.4.0.jar')
-    compile 'com.jakewharton:butterknife:8.6.0'
+    //
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    //百度地图
+    compile files('libs/BaiduLBS_Android.jar')
+    //gson
+    compile 'com.google.code.gson:gson:2.8.1'
+    //必须使用
+    compile 'com.lzy.net:okgo:3.0.4'
+    //以下三个选择添加，okrx和okrx2不能同时使用
+    compile 'com.lzy.net:okrx2:2.0.2'
+    compile 'com.lzy.net:okserver:2.0.5'
+    compile 'com.squareup.picasso:picasso:2.5.2'
     compile files('libs/asmack-jse-buddycloud-2010.12.11.jar')
     compile files('libs/jpinyin-1.0.jar')
-    compile files('libs/MobCommons-2017.0608.1618.jar')
-    compile files('libs/MobTools-2017.0608.1618.jar')
-    compile files('libs/ShareSDK-Core-3.0.0.jar')
-    compile files('libs/ShareSDK-Email-3.0.0.jar')
-    compile files('libs/ShareSDK-QQ-3.0.0.jar')
-    compile files('libs/ShareSDK-QZone-3.0.0.jar')
-    compile files('libs/ShareSDK-ShortMessage-3.0.0.jar')
-    compile files('libs/ShareSDK-SinaWeibo-3.0.0.jar')
-    compile files('libs/ShareSDK-Wechat-3.0.0.jar')
-    compile files('libs/ShareSDK-Wechat-Core-3.0.0.jar')
-    compile files('libs/ShareSDK-Wechat-Favorite-3.0.0.jar')
-    compile files('libs/ShareSDK-Wechat-Moments-3.0.0.jar')
-    compile files('libs/ShareSDK-Alipay-3.0.0.jar')
-    compile files('libs/ShareSDK-Alipay-Core-3.0.0.jar')
-    compile files('libs/ShareSDK-Alipay-Moments-3.0.0.jar')
-    compile files('libs/ShareSDK-Facebook-3.0.0.jar')
-    compile files('libs/ShareSDK-Twitter-3.0.0.jar')
-    compile 'de.greenrobot:greendao:2.1.0'
-    compile 'de.greenrobot:greendao-generator:2.1.0'
-    compile 'com.squareup.retrofit2:retrofit:2.0.2'
-    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
-
-    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile files('libs/nineoldandroids-2.4.0.jar')
 
 }

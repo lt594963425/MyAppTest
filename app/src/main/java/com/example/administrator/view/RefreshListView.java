@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.administrator.fragmenttabhost.R;
+import com.example.administrator.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,8 +27,8 @@ import java.util.Date;
 public class RefreshListView extends ListView implements AbsListView.OnScrollListener {
 
     //定义接口的成员变量
-    private  onRefreshListener onefreshlistener;
-    private int  downY ;//按下时的偏移量
+    private onRefreshListener onefreshlistener;
+    private int downY;//按下时的偏移量
     private String TAG;
     private View headView; //头布局对象
     private ImageView ivArrow;
@@ -41,7 +41,7 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
     private RotateAnimation upAnimation;
     private RotateAnimation downAnimation;
     private static final int XIALA_SHUA = 1;
-    private static final int SHUAING =2 ;
+    private static final int SHUAING = 2;
     private static final int FANG_KAI = 3;
     private int stateArrow = XIALA_SHUA;
     private boolean isLoadingMore = false;
@@ -61,6 +61,7 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
         initFooterView();
         setOnScrollListener(this);
     }
+
     /**
      * 初始化脚布局
      */
@@ -74,6 +75,7 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
 
         this.addFooterView(footerView);
     }
+
     private void initHeaderView() {
         //找控件
         headView = View.inflate(getContext(), R.layout.list_addbefore, null);
@@ -130,14 +132,14 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
                 int datelY = moveY - downY;
                 int firstVisiblePosition = getFirstVisiblePosition();//得到第一个索引得位置2
                 int newposition = -headViewHeight + datelY;
-                if(newposition>50){
-                    newposition =50;
+                if (newposition > 50) {
+                    newposition = 50;
                 }
-                if (newposition >-headViewHeight &&firstVisiblePosition == 0) {
+                if (newposition > -headViewHeight && firstVisiblePosition == 0) {
                     if (newposition < 0 && stateArrow == FANG_KAI) {//下拉刷新
                         stateArrow = XIALA_SHUA;
                         refreshHeaderViewState();
-                    }else if (newposition > 0  && stateArrow == XIALA_SHUA) {//松开刷新
+                    } else if (newposition > 0 && stateArrow == XIALA_SHUA) {//松开刷新
                         stateArrow = FANG_KAI;
                         refreshHeaderViewState();
                     }
@@ -148,14 +150,14 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
                 break;
             case MotionEvent.ACTION_UP://抬起
                 // 判断当前的状态是哪一种
-                if(stateArrow == XIALA_SHUA) { // 当前是在下拉刷新状态下松开了, 什么都不做, 把头布局隐藏就可以.
+                if (stateArrow == XIALA_SHUA) { // 当前是在下拉刷新状态下松开了, 什么都不做, 把头布局隐藏就可以.
                     headView.setPadding(0, -headViewHeight, 0, 0);
-                } else if(stateArrow == FANG_KAI) { // 当前的状态属于释放刷新, 并且松开了. 应该把头布局正常显示, 进入正在刷新中状态.
+                } else if (stateArrow == FANG_KAI) { // 当前的状态属于释放刷新, 并且松开了. 应该把头布局正常显示, 进入正在刷新中状态.
                     headView.setPadding(0, 0, 0, 0);
                     stateArrow = SHUAING;
                     refreshHeaderViewState();
                     // 调用用户的监听事件.
-                    if(onefreshlistener != null) {
+                    if (onefreshlistener != null) {
                         onefreshlistener.onPullDownRefresh();
                     }
                 }
@@ -165,6 +167,7 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
         return super.onTouchEvent(ev);
 
     }
+
     /**
      * 根据当前的状态currentState来刷新头布局的状态.
      */
@@ -198,9 +201,9 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
     public void onScrollStateChanged(AbsListView view, int scrollState) {
         // 当前的状态是停止, 并且屏幕上显示的最后一个条目的索引是ListView中总条目个数 -1;
 //		System.out.println("scrollState: " + scrollState + ", last: " + getLastVisiblePosition() + ", count: " + getCount());
-        if((scrollState == OnScrollListener.SCROLL_STATE_IDLE	// 当前是停滞或者是快速滑动时
+        if ((scrollState == OnScrollListener.SCROLL_STATE_IDLE    // 当前是停滞或者是快速滑动时
                 || scrollState == OnScrollListener.SCROLL_STATE_FLING)
-                && getLastVisiblePosition() == (getCount() -1)
+                && getLastVisiblePosition() == (getCount() - 1)
                 && !isLoadingMore) {
             System.out.println("滑动到底部, 可以加载更多数据了.");
 
@@ -208,7 +211,7 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
             footerView.setPadding(0, 0, 0, 0);
             setSelection(getCount()); // 滑动到最底部
 
-            if(onefreshlistener != null) {
+            if (onefreshlistener != null) {
                 onefreshlistener.onLoadingMore();
             }
         }
@@ -220,25 +223,27 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
 
     }
 
-    public interface onRefreshListener{
+    public interface onRefreshListener {
         /**
          * 下拉时调用此方法
          */
         public void onPullDownRefresh();
+
         /**
          * 当加载更多时调用此方法
          */
         public void onLoadingMore();
     }
+
     /**
      * 刷新完成, 用户调用此方法, 把对应的头布局恢复为默认状态
      */
     public void onRefreshFinish() {
-        if(isLoadingMore) { // 当前属于加载更多中
+        if (isLoadingMore) { // 当前属于加载更多中
             // 隐藏脚布局
             footerView.setPadding(0, -footerViewHeight, 0, 0);
             isLoadingMore = false;
-        }else {
+        } else {
             // 下拉刷新操作
             // 隐藏头布局
             headView.setPadding(0, -headViewHeight, 0, 0);

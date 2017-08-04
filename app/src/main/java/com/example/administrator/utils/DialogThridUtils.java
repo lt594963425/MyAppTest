@@ -13,8 +13,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.administrator.fragmenttabhost.R;
-
+import com.example.administrator.R;
 
 public class DialogThridUtils {
     /**

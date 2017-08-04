@@ -1,12 +1,23 @@
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="AppTheme.Base" />
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!--标题颜色 -->
+        <item name="colorPrimary">@color/white</item>
+        <!--状态栏颜色-->
+        <item name="colorPrimaryDark">@color/white</item>
+        <!--Window color-->
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:actionMenuTextAppearance">@style/CActionMenuTextAppearance</item>
+    </style>
+    <style name="CActionMenuTextAppearance" parent="@android:style/TextAppearance.Holo.Small">
+        <item name="android:textSize">@dimen/abc_text_size_subtitle_material_toolbar</item>
+        <item name="android:textStyle">normal</item>
+        <item name="actionMenuTextAppearance">
+            @android:style/TextAppearance.Holo.Widget.ActionBar.Menu
+        </item>
     </style>
     <style name="TransDialogStyle" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
@@ -27,7 +38,6 @@
         <item name="android:windowNoTitle">true</item>
         <!-- <item name="android:background">@android:color/transparent</item> -->
         <item name="android:background">@android:color/transparent</item>
-        <item name="android:windowBackground">@drawable/popup_bg</item>
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:backgroundDimAmount">0.5</item>
         <item name="android:windowFullscreen">true</item>
@@ -54,5 +64,44 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
         <item name="android:backgroundDimEnabled">true</item>
+    </style>
+    <!--控制头部据appbar的样式-->
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <!--用于控制toolbar溢出菜单的样式-->
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+   <!--tablayout-->
+    <style name="TabLayoutTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="BottomDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowAnimationStyle">@style/BottomDialog.AnimationStyle</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+    <style name="BottomDialog.AnimationStyle" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_from_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_to_bottom</item>
+    </style>
+
+    <!--toolbar的样式-->
+    <style name="toolbar_theme" parent="@style/ThemeOverlay.AppCompat.Light">
+        <item name="android:textSize">18sp</item>
+        <!--修改toolbar的Title(大标题)颜色-->
+        <item name="android:textColorPrimary">@color/colorOrange</item>
+        <!--修改toolbar的subtitle(小标题)颜色-->
+        <item name="subtitleTextColor">@color/colorOrange</item>
+        <!--修改toolbar的图标颜色.-->
+        <item name="colorControlNormal">@color/colorOrange</item>
+    </style>
+    <style name="popup_theme" parent="@style/ThemeOverlay.AppCompat.Light">
+        <!--设置背景-->
+        <item name="android:background">@android:color/white</item>
+        <!--设置字体颜色-->
+        <item name="android:textColor">@color/colorOrange</item>
+        <!--设置不覆盖锚点-->
+        <item name="overlapAnchor">false</item>
     </style>
 </resources>

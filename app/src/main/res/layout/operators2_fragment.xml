@@ -1,0 +1,66 @@
+<!--
+  Copyright 2013 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Transforming and Filtering Observables\n变换和过滤Obervable发出数据的操作符"
+            android:textColor="#000000"/>
+
+
+
+        <Button
+            android:id="@+id/btn_flarmap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="flatmap"/>
+
+        <Button
+            android:id="@+id/btn_concatmap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="concat"/>
+
+        <Button
+            android:id="@+id/btn_switchmap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="switchmap"/>
+
+        <Button
+            android:id="@+id/btn_buffer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="buffer"/>
+
+    </LinearLayout>
+</ScrollView>
+

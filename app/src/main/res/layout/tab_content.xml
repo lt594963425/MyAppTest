@@ -6,18 +6,16 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="#ffffff">
-
     <ImageView
         android:id="@+id/tab_imageview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         />
-
     <TextView
         android:id="@+id/tab_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        android:textColor="#000000" />
+        android:textColor="@color/selector_main_tab_textcolor" />
 
 </LinearLayout>

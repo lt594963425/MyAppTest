@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.administrator.view.XToolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
+    android:title="有码走天下"
+    android:minHeight="?attr/actionBarSize"
+    app:popupTheme="@style/popup_theme"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/white"
+    app:theme ="@style/toolbar_theme"
+    app:navigationIcon="@drawable/vd_return"
+    app:titleTextColor="@color/colorOrange"/>
+

@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">FragmentTabHost</string>
+    <string name="app_name">有码走天下</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="simple_view_behavior">com.example.administrator.view.SimpleViewBehavior</string>
+    <string name="translate_up_down_behavior">com.example.administrator.view.TranslateUpDownBehavior</string>
 </resources>
