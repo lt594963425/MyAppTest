@@ -20,6 +20,8 @@ import static org.jivesoftware.smackx.pubsub.FormType.result;
  */
 
 public class ActivityImageLoader extends BaseActivity {
+
+    private static final String TAG = "ActivityImageLoader";
     //定义布局的控件
     ImageView imageView;
     //定义三级缓存工具类
@@ -68,4 +70,7 @@ public class ActivityImageLoader extends BaseActivity {
       //开始缓存
         MyApplication.getAcache().put("homemini_data", result, 60* ACache.TIME_DAY);
     }
+
+
+
 }

@@ -1,4 +1,4 @@
-package com.example.administrator.fragment.fragment4.activity;
+package com.example.administrator.fragment.fragment2.activity;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -24,6 +24,7 @@ import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 import com.example.administrator.R;
 import com.example.administrator.base.BaseActivity;
+import com.example.administrator.fragment.fragment4.activity.MyOrientationListener;
 import com.example.administrator.utils.NetWorkUtils;
 import com.example.administrator.utils.ToastUtils;
 

@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:lt="http://schemas.android.com/tools"
     android:scrollbars="none">
 
     <LinearLayout
@@ -10,23 +11,15 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
-
-        <com.example.administrator.view.FocusTextview
-            android:id="@+id/AMTV1"
-            android:layout_width="400dip"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="80dip"
-            android:background="#2FFFFFFF"
-            android:ellipsize="marquee"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:lines="1"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:scrollHorizontally="true"
-            android:text="这才是真正的文字跑马灯效果,文字移动速度，文字移动方向，文字移动的样式，动画等等……"
-            android:textColor="@android:color/black"
-            android:textSize="25sp" />
-
+        <com.example.administrator.view.MyView
+            android:layout_centerInParent="true"
+            android:id="@+id/second_myView"
+            lt:background="#f00"
+            android:layout_width="2dp"
+            android:layout_height="2dp" />
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="5dp"/>
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
             android:layout_width="96dp"

@@ -1,29 +1,40 @@
 package com.example.administrator.openGles;
 
+import android.content.Context;
 import android.opengl.GLSurfaceView.Renderer;
 import android.opengl.GLU;
+import android.opengl.Matrix;
 
-import com.example.administrator.mesh.Cube;
-import com.example.administrator.mesh.Group;
+import com.example.administrator.fragment.fragment2.activity.GLBitmap;
 import com.example.administrator.mesh.Mesh;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 public class OpenGLRenderer implements Renderer {
+	private final Context context;
 	private float angle =10f;
 	// Initialize our square.
 	Square square1 = new Square();
 	Square square = new ColorSquare();
 	private Mesh root;
-	public OpenGLRenderer() {
+	private final GLBitmap getBitMap = new GLBitmap();
+
+	// mMVPMatrix是"Model View Projection Matrix"的缩写 模型视图投影矩阵
+	private final float[] mMVPMatrix = new float[16];
+	private final float[] mProjectionMatrix = new float[16];//定义投影矩阵变量
+	private final float[] mViewMatrix = new float[16];//定义相机视图矩阵变量
+	public OpenGLRenderer(Context context) {
+		this.context = context;
+
+
 		// Initialize our cube.
-		Group group = new Group();
-		Cube cube = new Cube(1, 1, 1);
-		cube.rx = 45;
-		cube.ry = 45;
-		group.add(cube);
-		root = group;
+//		Group group = new Group();
+//		Cube cube = new Cube(1, 1, 1);
+//		cube.rx = 45;
+//		cube.ry = 45;
+//		group.add(cube);
+//		root = group;
 
 	}
 	/*
@@ -35,21 +46,15 @@ public class OpenGLRenderer implements Renderer {
          * egl.EGLConfig)
 	 */
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-		// Set the background color to black ( rgba ).
-		gl.glClearColor(0.5f, 0.5f, 0.5f, 0.5f);  // OpenGL docs.
-		// Enable Smooth Shading, default not really needed.
-		gl.glShadeModel(GL10.GL_SMOOTH);// OpenGL docs.
-		// Depth buffer setup.
-		gl.glClearDepthf(1.0f);// OpenGL docs.
-		// Enables depth testing.
-		gl.glEnable(GL10.GL_DEPTH_TEST);// OpenGL docs.
-		// The type of depth testing to do.
-		gl.glDepthFunc(GL10.GL_LEQUAL);// OpenGL docs.
-		// Really nice perspective calculations.
-		gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, // OpenGL docs.
-                          GL10.GL_NICEST);
-		
-		
+		getBitMap.loadGLTexture(gl, this.context);
+		gl.glEnable(GL10.GL_TEXTURE_2D); // Enable Texture Mapping ( NEW )
+		gl.glShadeModel(GL10.GL_SMOOTH); // Enable Smooth Shading
+		gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // Black Background
+		gl.glClearDepthf(1.0f); // Depth Buffer Setup
+		gl.glEnable(GL10.GL_DEPTH_TEST); // Enables Depth Testing
+		gl.glDepthFunc(GL10.GL_LEQUAL); // The Type Of Depth Testing To Do
+
+		gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_NICEST);
 
 	}
 
@@ -61,18 +66,57 @@ public class OpenGLRenderer implements Renderer {
          * microedition.khronos.opengles.GL10)
 	 */
 	public void onDrawFrame(GL10 gl) {
-		// Clears the screen and depth buffer.
-		gl.glClear(GL10.GL_COLOR_BUFFER_BIT | // OpenGL docs.
-                           GL10.GL_DEPTH_BUFFER_BIT);
-//		drawOneSqure(gl);
-//		drawThreeSqure(gl);
-		draw3DRoot(gl);
-	}
+		// 设置相机的位置(视图矩阵)
+		Matrix.setLookAtM(mViewMatrix, 0, 0, 0, -3, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
 
+		// 将mProjectionMatrix和mViewMatrix矩阵相乘并赋给mMVPMatrix
+		Matrix.multiplyMM(mMVPMatrix, 0, mProjectionMatrix, 0, mViewMatrix, 0);
+
+		gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+		// Reset the Modelview Matrix
+		gl.glLoadIdentity();
+		gl.glTranslatef(0.0f, 0.0f, -5.0f); // move 5 units INTO the screen is
+		gl.glScalef(.3f, .3f, .3f);
+		// the same as moving the camera 5
+		// units away
+		// square.draw(gl);
+
+		getBitMap.draw(gl);
+		changeGLViewport(gl);
+		//drawOneSqure(gl);
+//		drawThreeSqure(gl);
+		//draw3DRoot(gl);
+	}
+	/**
+	 * 通过改变gl的视角获取
+	 *
+	 * @param gl
+	 */
+	private long frameSeq = 0;
+	private int viewportOffset = 0;
+	private int maxOffset = 400;
+	private void changeGLViewport(GL10 gl) {
+		System.out.println("time=" + System.currentTimeMillis());
+		frameSeq++;
+		viewportOffset++;
+		// The
+		// Current
+		if (frameSeq % 100 == 0) {// 每隔100帧，重置
+			gl.glViewport(0, 0, width, height);
+			viewportOffset = 0;
+		} else {
+			int k = 4;
+			gl.glViewport(-maxOffset + viewportOffset * k, -maxOffset
+					+ viewportOffset * k, this.width - viewportOffset * 2 * k
+					+ maxOffset * 2, this.height - viewportOffset * 2 * k
+					+ maxOffset * 2);
+		}
+	}
 	private void draw3DRoot(GL10 gl) {
 		// Replace the current matrix with the identity matrix
 		gl.glLoadIdentity();
 		// Translates 4 units into the screen.
+		//在屏幕的位置
 		gl.glTranslatef(0, 0, -4);
 		// Draw our scene.
 		root.draw(gl);
@@ -158,7 +202,18 @@ public class OpenGLRenderer implements Renderer {
 	 * android.opengl.GLSurfaceView.Renderer#onSurfaceChanged(javax.
          * microedition.khronos.opengles.GL10, int, int)
 	 */
+	private int width = 0;
+	private int height = 0;
 	public void onSurfaceChanged(GL10 gl, int width, int height) {
+		if (height == 0) { // Prevent A Divide By Zero By
+			height = 1; // Making Height Equal One
+		}
+		this.width = width;
+		this.height = height;
+		float ratio = (float) width / height;//GLSurfaceView的宽高比
+
+		// 根据六个面定义投影矩阵  frustumM(float[] m, int offset, float left, float right, float bottom, float top, float near, float far)
+		Matrix.frustumM(mProjectionMatrix, 0, -ratio, ratio, -1, 1, 3, 7);
 		// Sets the current view port to the new size.
 		gl.glViewport(0, 0, width, height);// OpenGL docs.
 		// Select the projection matrix

@@ -1,4 +1,4 @@
-package com.example.administrator.fragment.fragment4.activity;
+package com.example.administrator;
 
 
 import android.os.Build;
@@ -16,7 +16,6 @@ import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
-import com.example.administrator.R;
 import com.example.administrator.fragment.Fragment1;
 import com.example.administrator.fragment.Fragment2;
 import com.example.administrator.fragment.Fragment3;

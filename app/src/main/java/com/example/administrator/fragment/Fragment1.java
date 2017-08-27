@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.administrator.R;
-import com.example.administrator.fragment.fragment4.activity.MainActivity;
+import com.example.administrator.MainActivity;
 import com.example.administrator.utils.Md5Utils;
 import com.example.administrator.utils.ToastUtils;
 import com.youth.banner.Banner;

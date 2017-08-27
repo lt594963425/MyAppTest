@@ -36,6 +36,7 @@ public class Fragment3 extends Fragment implements  TabLayout.OnTabSelectedListe
         tab = (TabLayout) view.findViewById(R.id.tab);
         mViewPager = (MyViewPager) view.findViewById(R.id.viewPager);
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+
         initToolBar(toolbar,false,"");
         items = new ArrayList<>();
         items.add(new Pair<>("OkGo", new Fragmenta()));

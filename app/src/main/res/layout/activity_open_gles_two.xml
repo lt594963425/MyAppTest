@@ -3,17 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
     <FrameLayout
-        android:id="@+id/camera_container_layout"
+        android:id="@+id/camera_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <SurfaceView
-            android:id="@+id/textureView1"
+            android:id="@+id/glSurface"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </FrameLayout>

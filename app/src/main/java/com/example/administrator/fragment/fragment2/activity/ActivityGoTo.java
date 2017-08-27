@@ -1,4 +1,4 @@
-package com.example.administrator.fragment.fragment4.activity;
+package com.example.administrator.fragment.fragment2.activity;
 
 import android.app.Activity;
 import android.app.Dialog;

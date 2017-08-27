@@ -103,6 +103,7 @@ public class ImageLoader {
         threadLooper.shutdown();
     }
 
+
     /**
      * 定义一个接口，里面有一个方法，
      * 这里有一个Bitmap对象参数，作用是让调用这接收这个Bitmap对象，实际这bitmap对象就是缓存中的对象
